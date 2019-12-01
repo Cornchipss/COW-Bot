@@ -1,2 +1,2 @@
 # COW-Bot
-The Church of Wind's personal COW Bot
+ The COW Bot that rules the Church of Wind's code
