@@ -191,7 +191,7 @@ let consoleCommands = [];
 
         const thotlist = [ 'Rachel', 'Fares', 'Jose', 'Angel', 'Melina', 'Miguel', 'Dan', 'Cornchip', 'Dom', 'Ethan', 'Roman', 'Troy', 'Pat', 'Ken' ];
         const edgelist = ['Troy', 'Angel', 'Miguel', 'Jose', 'Dan', 'Ken'];
-        const peenerlist = ['Jose', 'Dom', 'Dan', 'Pat', 'Miguel', 'Angel', 'Cornchip', 'Troy', 'Ethan', 'Roman', 'Fares', 'Melina', 'Rachel', 'Ken'];
+        const peenerlist = ['Jose', 'Dom', 'Dan', 'Pat', 'Miguel', 'Angel', 'Cornchip', 'Troy', 'Ethan', 'Roman', 'Melina', 'Rachel', 'Fares', 'Ken'];
         const nutlist = ['Ken', 'Roman', 'Fares', 'Ethan', 'Dan', 'Troy', 'Cornchip', 'Dom', 'Miguel', 'Jose', 'Pat', 'Angel', 'Rachel', 'Melina'];
 
         discordCommands.push(new CustomCommand(['triangle', 'delta'], sendMessageAction('Δ'), 'Δ'));
@@ -207,6 +207,41 @@ let consoleCommands = [];
 
         discordCommands.push(new CustomCommand('settle', sendFileAction('./settle.png'), 'Settles everyone'));
         discordCommands.push(new CustomCommand('settlehot', sendFileAction('./settle-hot.png'), 'Settles everyone hotly'));
+        
+        discordCommands.push(new CustomCommand(['coinflip', 'flipcoin'], (msg) =>
+        {
+            send(Math.random() < .5 ? 'Heads' : 'Tails', msg.channel);
+        }));
+
+        discordCommands.push(new CustomCommand('d', (msg) =>
+        {
+            let split = msg.content.split(' ');
+            if(split.length > 1)
+            {
+                let numsStr = '';
+                for(let i = 1; i < split.length; i++)
+                {
+                    let num = parseInt(split[i]);
+                    if(num >= 1) // also checks if it's actually a number
+                    {
+                        numsStr += ' ' + Math.round((Math.random() * (num - 1) + 1));
+                    }
+                    else
+                    {
+                        send('Nice try skrub.', msg.channel);
+                        numsStr = undefined;
+                        break;
+                    }
+                }
+
+                if(numsStr)
+                    send("🎲:" + numsStr, msg.channel);
+                else
+                    send('Format: d #>=1', msg.channel);
+            }
+            else
+                send('Format: d #>=1', msg.channel);
+        }));
 
         discordCommands.push(new CustomCommand('kick', (msg) =>
         {
@@ -234,6 +269,13 @@ let consoleCommands = [];
         discordCommands.push(new CustomCommand(['giveortake', 'plusorminus', 'minusplus', 'plusminus'], sendMessageAction('±'), '±'));
         discordCommands.push(new CustomCommand('greekquestionmark', sendMessageAction(';'), ';'));
         discordCommands.push(new CustomCommand('mu', sendMessageAction('µ'), 'µ'));
+        discordCommands.push(new CustomCommand('omega', sendMessageAction('ω'), 'ω'));
+        discordCommands.push(new CustomCommand('pi', sendMessageAction('π'), 'π'));
+        discordCommands.push(new CustomCommand('phi', sendMessageAction('φ'), 'φ'));
+        discordCommands.push(new CustomCommand(['allrealnum', 'realnums', 'allrealnums'], sendMessageAction('ℝ'), 'ℝ'));
+        discordCommands.push(new CustomCommand(['density', 'rho'], sendMessageAction('ρ'), 'ρ'));
+        discordCommands.push(new CustomCommand('ken', sendMessageAction('8=>'), 'Show\'s Ken\'s peener'));
+        discordCommands.push(new CustomCommand('ken', sendMessageAction('8========>'), 'Show\'s Jose\'s peener'));
         discordCommands.push(new CustomCommand('github', sendMessageAction('https://github.com/Cornchipss/COW-Bot'), 'Sends the GitHub page for the COW Bot'));
 
         discordCommands.push(new CustomCommand('weather', (msg) =>
@@ -314,7 +356,7 @@ let consoleCommands = [];
                     {
                         return (channel.name === 'general' && channel.type === 'text');
                     });
-
+                    
                     c.forEach(channel =>
                     {
                         send('@everyone >> ' + cmd.substring(command.length), channel);
@@ -327,24 +369,30 @@ let consoleCommands = [];
 
         consoleCommands.push(new CustomCommand('kick', (split) =>
         {
-            if (split.length > 1) {
+            if (split.length > 1)
+            {
                 let memberFound = false;
 
-                client.guilds.forEach(g => {
+                client.guilds.forEach(g =>
+                {
                     let members = g.members;
-                    members.forEach(m => {
-                        if (m.user.tag === split[1]) {
+                    members.forEach(m =>
+                    {
+                        if (m.user.tag === split[1])
+                        {
                             memberFound = true;
                             kick(m, split.length > 2 ? split[2] : 'blaspheming', g.channels.find(c => c.name === 'general'));
                         }
                     });
                 });
 
-                if (!memberFound) {
+                if (!memberFound)
+                {
                     console.log("No member by that name was found - make sure to format it like name#0000");
                 }
             }
-            else {
+            else
+            {
                 console.log('You must provide the name + numbers!');
             }
         }, 'kicks a specified person'));
