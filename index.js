@@ -275,7 +275,7 @@ let consoleCommands = [];
         discordCommands.push(new CustomCommand(['allrealnum', 'realnums', 'allrealnums'], sendMessageAction('ℝ'), 'ℝ'));
         discordCommands.push(new CustomCommand(['density', 'rho'], sendMessageAction('ρ'), 'ρ'));
         discordCommands.push(new CustomCommand('ken', sendMessageAction('8=>'), 'Show\'s Ken\'s peener'));
-        discordCommands.push(new CustomCommand('ken', sendMessageAction('8========>'), 'Show\'s Jose\'s peener'));
+        discordCommands.push(new CustomCommand('jose', sendMessageAction('8========>'), 'Show\'s Jose\'s peener'));
         discordCommands.push(new CustomCommand('github', sendMessageAction('https://github.com/Cornchipss/COW-Bot'), 'Sends the GitHub page for the COW Bot'));
 
         discordCommands.push(new CustomCommand('weather', (msg) =>
