@@ -10,7 +10,7 @@
   "author": "Cornchip",
   "license": "MIT",
   "dependencies": {
-    "discord.js": "^11.4.2",
+    "discord.js": "^11.5.1",
     "node-fetch": "^2.3.0",
     "winston": "^3.1.0"
   }
