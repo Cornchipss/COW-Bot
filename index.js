@@ -205,8 +205,8 @@ let consoleCommands = [];
         discordCommands.push(new CustomCommand(['peenerlist', 'penislist', 'peeners'], sendListAction(peenerlist, 'Peener List', 'Miguel'), 'Sends the peener ranking list'));
         discordCommands.push(new CustomCommand(['ejaculations', 'ejaculationlist', 'nutlist', 'fastestnut', 'fastestnutinthewest'], sendListAction(nutlist, 'Fastest Ejaculation List', 'Miguel'), 'Sends fastest ejaculation rankings'));
 
-        discordCommands.push(new CustomCommand('settle', sendFileAction('./settle.png'), 'Settles everyone'));
-        discordCommands.push(new CustomCommand('settlehot', sendFileAction('./settle-hot.png'), 'Settles everyone hotly'));
+        discordCommands.push(new CustomCommand('settle', sendFileAction('./imgs/settle.png'), 'Settles everyone'));
+        discordCommands.push(new CustomCommand('settlehot', sendFileAction('./imgs/settle-hot.png'), 'Settles everyone hotly'));
         
         discordCommands.push(new CustomCommand(['coinflip', 'flipcoin'], (msg) =>
         {
